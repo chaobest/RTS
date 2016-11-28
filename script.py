@@ -114,9 +114,9 @@ def writeToFile(data, output_file):
 def getUserInfo():
     KEY_FILE = 'keys.json'
 
-    #ROOT_USER = input("twitter username:")
-	#output(sys.argv[1])
+
     ROOT_USER = sys.argv[1]
+    #print ROOT_USER
     NO_OF_FOLLOWERS = 10
     NO_OF_FRIENDS = 10
 
@@ -151,26 +151,15 @@ def getUserInfo():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
+       
 
     #nsert initial values into feed database
     #c.execute('DROP TABLE IF EXISTS tweets;')
     #c.execute('DROP TABLE IF EXISTS followers;')
     c.execute('CREATE TABLE IF NOT EXISTS users (entry_id INTEGER PRIMARY KEY AUTOINCREMENT, username, CONSTRAINT name_unique UNIQUE (username))')
     c.execute('CREATE TABLE IF NOT EXISTS tweets (entry_id INTEGER PRIMARY KEY AUTOINCREMENT, id, tweet TEXT)')
-    c.execute('CREATE TABLE IF NOT EXISTS keywords (entry_id INTEGER PRIMARY KEY AUTOINCREMENT, keyword TEXT, bool TEXT)')
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Sports/Athletics Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Seminar/Lecture/Colloquium Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Religious & National Observances Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Academic Calendar Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Institute Holidays Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Training/Workshop Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Student sponsored Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Other/Miscellaneous Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Conference/Symposium Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Career/Professional Development Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Arts and Performance Events', 'false')")
-    c.execute("INSERT INTO keywords (keyword, bool) VALUES ('Special Events', 'false')")
-    #c.execute('CREATE TABLE IF NOT EXISTS followers (entry_id INTEGER PRIMARY KEY AUTOINCREMENT, id, title);')
+    
+    
     
     
     #check for redudant username
@@ -194,10 +183,14 @@ def getUserInfo():
 	
 
     #----get keywords-------
-
+	
+    getKeywords.getKeywords(user_id)
+    print("1")
+    
     
 
 if __name__ == '__main__':
     getUserInfo()
     getEvents.getEventInfo()
-    getKeywords.getKeywords()
+    
+    
