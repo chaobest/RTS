@@ -63,7 +63,7 @@ def friendRecommend(root_user):
     for k, v in sortedL:
         counter = counter + 1
         if counter <= 5 and v >= -2.5:
-            cursor = conn.execute('SELECT username FROM users where entry_id = (?)', (k,))    
+            cursor = conn.execute('SELECT username FROM users where entry_id = (?,?)', (k,))    
             for row in cursor:
                 friend_name = row[0]
                 sortedList.append(friend_name)

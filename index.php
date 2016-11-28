@@ -1,10 +1,14 @@
-<html>
-<body>
+	<html>
+	<head>
+	<title>My first PHP document</title>
+	</head>
+	<body>
 
-<form action="exc.php" method="get">
-Twitter Username: <input type="text" name="name"><br>
-<input type="submit">
-</form>
+	<?php 
+	
+	echo "<p>Current date and time: " . date("r") . "</p>";
 
-</body>
-</html>
+	?>
+
+	</body>
+	</html>

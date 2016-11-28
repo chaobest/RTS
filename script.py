@@ -5,10 +5,10 @@ import tweepy
 import feedparser     # available at http://feedparser.org
 import sqlite3
 import os.path
-import sys
 
 import getEvents
 import getKeywords
+import sys
 
 ##import getPersonality
 ##import friendRecommend
@@ -114,7 +114,6 @@ def writeToFile(data, output_file):
 def getUserInfo():
     KEY_FILE = 'keys.json'
 
-
     ROOT_USER = sys.argv[1]
     #print ROOT_USER
     NO_OF_FOLLOWERS = 10
@@ -183,9 +182,7 @@ def getUserInfo():
 	
 
     #----get keywords-------
-	
     getKeywords.getKeywords(user_id)
-    print("1")
     
     
 
